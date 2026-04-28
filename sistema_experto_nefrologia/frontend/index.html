@@ -3,14 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Experto Nefrología</title>
+    <title>Sistema Experto - Nefrología</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Sistema Experto de Nefrología</h1>
-        <p>Diagnóstico y tratamiento de enfermedades renales</p>
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-heart-pulse"></i>
+                <h2>NefroExperto</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-page="diagnostico">
+                    <i class="fas fa-stethoscope"></i> <span>Diagnóstico</span>
+                </a>
+                <a href="#" class="nav-item" data-page="historial">
+                    <i class="fas fa-history"></i> <span>Historial</span>
+                </a>
+                <a href="#" class="nav-item" data-page="info">
+                    <i class="fas fa-info-circle"></i> <span>Información</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header-top">
+                <h1>Sistema Experto de Nefrología</h1>
+                <p>Diagnóstico inteligente de enfermedades renales</p>
+            </div>
+
+            <!-- Sección Diagnóstico -->
+            <section id="diagnostico-section" class="section active">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-search-plus"></i> Evaluación de Síntomas</h2>
+                    </div>
+                    
+                    <div class="card-body">
+                        <!-- Estado Inicial -->
+                        <div id="initial-state" class="state-container">
+                            <div class="welcome-box">
+                                <i class="fas fa-clipboard-list"></i>
+                                <h3>¡Bienvenido!</h3>
+                                <p>Este sistema experto te ayudará a identificar posibles enfermedades renales basándose en tus síntomas.</p>
+                                <p style="font-size: 0.9rem; color: #666; margin-top: 1rem;">⚠️ <strong>Descargo de responsabilidad:</strong> Este sistema es solo informativo. Consulta con un médico profesional para un diagnóstico definitivo.</p>
+                            </div>
+                            <button id="btn-start" class="btn btn-primary btn-lg">
+                                <i class="fas fa-play"></i> Iniciar Diagnóstico
+                            </button>
+                        </div>
+
+                        <!-- Estado de Preguntas -->
+                        <div id="question-state" class="state-container hidden">
+                            <div class="progress-indicator">
+                                <span id="progress-text">Pregunta 1 de 9</span>
+                                <div class="progress-bar">
+                                    <div id="progress-fill"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="question-box">
+                                <h3 id="question-title">¿Presenta alguno de estos síntomas?</h3>
+                                <p id="question-text">Cargando...</p>
+                            </div>
+                            
+                            <div class="button-group">
+                                <button id="btn-yes" class="btn btn-success">
+                                    <i class="fas fa-check"></i> Sí, lo tengo
+                                </button>
+                                <button id="btn-no" class="btn btn-danger">
+                                    <i class="fas fa-times"></i> No lo tengo
+                                </button>
+                                <button id="btn-unsure" class="btn btn-warning">
+                                    <i class="fas fa-question"></i> No estoy seguro
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Estado de Resultado -->
+                        <div id="result-state" class="state-container hidden">
+                            <div class="result-box" id="result-content"></div>
+                            <button id="btn-restart" class="btn btn-primary btn-lg">
+                                <i class="fas fa-redo"></i> Nuevo Diagnóstico
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Historial -->
+            <section id="historial-section" class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-history"></i> Historial de Diagnósticos</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="historial-list"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Información -->
+            <section id="info-section" class="section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-book"></i> Información sobre Enfermedades Renales</h2>
+                    </div>
+                    <div class="card-body" id="info-content"></div>
+                </div>
+            </section>
+        </main>
     </div>
+
+    <script src="js/expert-system.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

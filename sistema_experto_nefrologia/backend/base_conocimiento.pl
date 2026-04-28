@@ -1,27 +1,8 @@
-% Base de Conocimiento - Sistema Experto de Nefrología
-% Contiene los hechos y reglas sobre enfermedades renales
+% ==========================================
+% base_conocimiento.pl
+% Formato: enfermedad(Nombre, [Lista_de_Sintomas], Tratamiento).
+% ==========================================
 
-% Hechos sobre enfermedades renales
-enfermedad(insuficiencia_renal_aguda).
-enfermedad(insuficiencia_renal_cronica).
-enfermedad(glomerulonefritis).
-enfermedad(pielonefritis).
-enfermedad(litiasis_renal).
-
-% Síntomas
-sintoma(dolor_espalda).
-sintoma(hematuria).
-sintoma(proteinuria).
-sintoma(hipertension).
-sintoma(edema).
-sintoma(oliguria).
-
-% Relaciones entre síntomas y enfermedades
-tiene_sintoma(insuficiencia_renal_aguda, oliguria).
-tiene_sintoma(insuficiencia_renal_aguda, edema).
-tiene_sintoma(insuficiencia_renal_cronica, hipertension).
-tiene_sintoma(glomerulonefritis, hematuria).
-tiene_sintoma(glomerulonefritis, proteinuria).
-tiene_sintoma(pielonefritis, dolor_espalda).
-tiene_sintoma(litiasis_renal, dolor_espalda).
-tiene_sintoma(litiasis_renal, hematuria).
+enfermedad('Calculos Renales', [dolor_flanco, hematuria, nauseas], 'Hidratacion intensa y analgesicos. Posible evaluacion urologica.').
+enfermedad('Infeccion Urinaria', [ardor_orinar, urgencia_miccional, fiebre], 'Ciclo de antibioticos y aumento de liquidos.').
+enfermedad('Insuficiencia Renal', [edema_piernas, fatiga, espuma_orina], 'Control estricto de presion, dieta baja en sodio y derivacion urgente.').

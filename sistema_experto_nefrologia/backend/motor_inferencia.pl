@@ -1,26 +1,30 @@
-% Motor de Inferencia - Sistema Experto de Nefrología
-% Realiza el razonamiento y diagnóstico
+% ==========================================
+% motor_inferencia.pl
+% ==========================================
+:- use_module(library(lists)).
+:- ensure_loaded('base_conocimiento.pl'). % Conecta con los datos
 
-:- consult('base_conocimiento.pl').
-
-% Diagnosticar enfermedad basado en síntomas
-diagnosticar(Enfermedad, Sintomas) :-
-    enfermedad(Enfermedad),
-    findall(Sintoma, (
-        member(Sintoma, Sintomas),
-        tiene_sintoma(Enfermedad, Sintoma)
-    ), SintomasCoincidentes),
-    length(SintomasCoincidentes, N),
-    N > 0.
-
-% Encontrar todas las enfermedades posibles
-diagnosticos_posibles(Sintomas, Diagnosticos) :-
-    findall(Enfermedad, diagnosticar(Enfermedad, Sintomas), Diagnosticos).
-
-% Grado de confianza del diagnóstico
-confianza_diagnostico(Enfermedad, Sintomas, Confianza) :-
-    findall(Sintoma, tiene_sintoma(Enfermedad, Sintoma), SintomasEsperados),
-    length(SintomasEsperados, Total),
-    findall(Sintoma, (member(Sintoma, Sintomas), tiene_sintoma(Enfermedad, Sintoma)), SintomasCoincidentes),
-    length(SintomasCoincidentes, Coincidentes),
-    (Total > 0 -> Confianza is (Coincidentes / Total) * 100 ; Confianza = 0).
+% Evalúa las respuestas del usuario y decide el siguiente paso
+evaluar_estado(Si, No, Respuesta) :-
+    (   % 1. Busca una enfermedad en la base de datos
+        enfermedad(Enf, SintomasRequeridos, Trat),
+        
+        % 2. Verifica que el usuario NO haya negado un síntoma clave
+        intersection(SintomasRequeridos, No, []),
+        
+        % 3. Verifica que los síntomas confirmados pertenezcan a esta enfermedad
+        subset(Si, SintomasRequeridos)
+    ->  
+        % 4. Revisa qué síntomas faltan por preguntar
+        subtract(SintomasRequeridos, Si, Faltantes),
+        (   Faltantes = [SiguienteSintoma | _] ->
+            % Si faltan síntomas, devuelve la pregunta
+            Respuesta = _{estado: "pregunta", sintoma: SiguienteSintoma}
+        ;   
+            % Si ya se confirmaron todos los síntomas, devuelve el diagnóstico
+            Respuesta = _{estado: "diagnostico", enfermedad: Enf, tratamiento: Trat}
+        )
+    ;   
+        % Si los síntomas no encajan con nada
+        Respuesta = _{estado: "error", mensaje: "No hay diagnostico coincidente"}
+    ).
