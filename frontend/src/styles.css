@@ -1,0 +1,582 @@
+/* =====================================================================
+   SISTEMA EXPERTO DE NEFROLOGIA - ESTILOS
+   ===================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f4f8fb;
+  --surface: #ffffff;
+  --primary: #0d6efd;
+  --primary-dark: #0a58ca;
+  --accent: #20c997;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --danger: #dc3545;
+  --warning: #f59e0b;
+  --success: #198754;
+  --leve: #10b981;
+  --moderada: #f59e0b;
+  --grave: #ef4444;
+  --shadow: 0 8px 24px rgba(13, 110, 253, 0.08);
+  --shadow-lg: 0 16px 48px rgba(13, 110, 253, 0.12);
+}
+
+/* ===== Typography ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #eef4fb 0%, #f4f8fb 100%);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 0.75rem;
+  color: var(--muted);
+}
+
+code {
+  background: #f3f4f6;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+/* ===== Layout ===== */
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+
+/* ===== Header ===== */
+.header {
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  padding: 24px 0;
+  margin-bottom: 32px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 300px;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.brand-text h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.brand-text p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--muted);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tab {
+  padding: 10px 16px;
+  border: 2px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.tab.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* ===== Card ===== */
+.card {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Welcome Card ===== */
+.welcome {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.welcome h2 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.welcome p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* ===== Progress Bar ===== */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+/* ===== Question Card ===== */
+.question {
+  color: var(--primary);
+  font-size: 1.3rem;
+  margin: 2rem 0;
+  line-height: 1.4;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 2rem;
+}
+
+.answer-btn {
+  padding: 16px 24px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.answer-btn:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.answer-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.answer-btn.yes:hover:not(:disabled) {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.answer-btn.no:hover:not(:disabled) {
+  background: rgba(220, 53, 69, 0.1);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.answer-btn.unknown:hover:not(:disabled) {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+/* ===== Results ===== */
+.results {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.no-result {
+  padding: 2rem;
+  background: #fef2f2;
+  border-left: 4px solid var(--danger);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.diagnoses {
+  margin-bottom: 2rem;
+}
+
+.diagnosis {
+  padding: 1.5rem;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.diagnosis:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.diagnosis-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.diagnosis-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.severity {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.severity.leve {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--leve);
+}
+
+.severity.moderada {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--moderada);
+}
+
+.severity.grave {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--grave);
+}
+
+.confidence {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.diagnosis-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.diagnosis-section strong {
+  display: block;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.diagnosis-section p {
+  color: var(--text);
+  margin: 0;
+}
+
+/* ===== Symptoms Summary ===== */
+.symptoms-summary {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f0fdf4;
+  border-left: 4px solid var(--success);
+  border-radius: 8px;
+}
+
+.symptoms-summary h3 {
+  color: var(--success);
+  margin-bottom: 1rem;
+}
+
+.symptom-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.symptom-tag {
+  display: inline-block;
+  background: var(--success);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ===== Buttons ===== */
+.btn-primary,
+.btn-secondary {
+  padding: 14px 32px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(13, 110, 253, 0.3);
+}
+
+.btn-secondary {
+  background: var(--border);
+  color: var(--text);
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.actions button {
+  flex: 1;
+  min-width: 150px;
+}
+
+/* ===== Disclaimer ===== */
+.disclaimer {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #fef3c7;
+  border-left: 4px solid var(--warning);
+  border-radius: 8px;
+  color: #78350f;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ===== Code Block ===== */
+.code-block {
+  background: #1f2937;
+  color: #e5e7eb;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-family: 'Monaco', 'Courier New', monospace;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.code-block code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+/* ===== Loading ===== */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border);
+  border-top: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .app {
+    padding: 16px 12px 48px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .brand {
+    width: 100%;
+  }
+
+  .tabs {
+    width: 100%;
+  }
+
+  .answers {
+    grid-template-columns: 1fr;
+  }
+
+  .diagnosis-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  .question {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 12px 8px 32px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+
+  .answer-btn {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+}
