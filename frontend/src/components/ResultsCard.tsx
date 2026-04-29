@@ -98,9 +98,6 @@ export default function ResultsCard({
         <button className="btn-primary" onClick={onRestart}>
           Nueva consulta
         </button>
-        <button className="btn-secondary" onClick={onViewKB}>
-          Ver base de conocimiento
-        </button>
       </div>
     </div>
   );

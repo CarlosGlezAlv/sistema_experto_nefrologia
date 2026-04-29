@@ -15,13 +15,10 @@ export default function Header({ view, onNavClick }: HeaderProps) {
       </div>
       <nav className="tabs">
         <button
-          className={`tab ${view !== 'kb' ? 'active' : ''}`}
-          onClick={() => onNavClick(view !== 'kb' ? view : 'welcome')}
+          className={`tab active`}
+          onClick={() => onNavClick('welcome')}
         >
           Consulta
-        </button>
-        <button className={`tab ${view === 'kb' ? 'active' : ''}`} onClick={() => onNavClick('kb')}>
-          Base de Conocimiento
         </button>
       </nav>
     </header>
