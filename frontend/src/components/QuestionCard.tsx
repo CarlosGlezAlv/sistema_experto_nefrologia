@@ -34,22 +34,25 @@ export default function QuestionCard({
           className="answer-btn yes"
           onClick={() => onAnswer('si')}
           disabled={loading}
+          title="Sí, experimento este síntoma"
         >
-          Sí
+          ✓ Sí
         </button>
         <button
           className="answer-btn no"
           onClick={() => onAnswer('no')}
           disabled={loading}
+          title="No, no experimento este síntoma"
         >
-          No
+          ✗ No
         </button>
         <button
           className="answer-btn unknown"
           onClick={() => onAnswer('no_se')}
           disabled={loading}
+          title="No estoy seguro"
         >
-          No sé
+          ? No sé
         </button>
       </div>
     </div>

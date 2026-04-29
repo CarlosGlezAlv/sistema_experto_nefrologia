@@ -9,8 +9,11 @@ export default function KnowledgeBase({ prologSource }: KnowledgeBaseProps) {
 
   return (
     <div className="card">
-      <h2>Base de Conocimiento (Prolog)</h2>
-      <p>Edite <code>nefrologia.pl</code> para agregar enfermedades, síntomas y tratamientos.</p>
+      <h2>Base de Conocimiento</h2>
+      <p style={{ color: 'var(--text-secondary)', marginBottom: '24px' }}>
+        Sistema de reglas Prolog que contiene la lógica de diagnóstico. 
+        Modifique <code style={{ background: 'var(--border-light)', padding: '4px 8px', borderRadius: '4px' }}>nefrologia.pl</code> para actualizar enfermedades, síntomas y criterios de diagnóstico.
+      </p>
       <pre className="code-block">
         <code>{escapeHtml(prologSource)}</code>
       </pre>

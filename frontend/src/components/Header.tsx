@@ -7,18 +7,18 @@ export default function Header({ view, onNavClick }: HeaderProps) {
   return (
     <header className="header">
       <div className="brand">
-        <div className="brand-icon">N</div>
+        <div className="brand-icon">⚕</div>
         <div className="brand-text">
-          <h1>Sistema Experto de Nefrología</h1>
-          <p>Diagnóstico asistido basado en Prolog</p>
+          <h1>Nefroexperto</h1>
+          <p>Sistema Experto de Nefrología</p>
         </div>
       </div>
       <nav className="tabs">
         <button
-          className={`tab active`}
+          className={`tab ${view === 'welcome' ? 'active' : ''}`}
           onClick={() => onNavClick('welcome')}
         >
-          Consulta
+          Inicio
         </button>
       </nav>
     </header>

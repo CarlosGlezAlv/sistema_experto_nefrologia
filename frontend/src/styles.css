@@ -9,22 +9,29 @@
 }
 
 :root {
-  --bg: #f4f8fb;
+  --bg: #fafbfc;
   --surface: #ffffff;
-  --primary: #0d6efd;
-  --primary-dark: #0a58ca;
-  --accent: #20c997;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --danger: #dc3545;
-  --warning: #f59e0b;
-  --success: #198754;
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --primary-light: #3b82f6;
+  --accent: #0891b2;
+  --accent-light: #06b6d4;
+  --text: #0f172a;
+  --text-secondary: #475569;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  --danger: #dc2626;
+  --warning: #d97706;
+  --success: #16a34a;
+  --info: #0284c7;
   --leve: #10b981;
   --moderada: #f59e0b;
   --grave: #ef4444;
-  --shadow: 0 8px 24px rgba(13, 110, 253, 0.08);
-  --shadow-lg: 0 16px 48px rgba(13, 110, 253, 0.12);
+  --shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 8px 16px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.15);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===== Typography ===== */
@@ -33,11 +40,12 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #eef4fb 0%, #f4f8fb 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
   color: var(--text);
   min-height: 100vh;
   line-height: 1.6;
+  letter-spacing: 0.01em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -75,25 +83,29 @@ code {
 
 /* ===== Layout ===== */
 .app {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 24px 64px;
+  padding: 40px 24px 80px;
 }
 
 /* ===== Header ===== */
 .header {
   background: var(--surface);
-  border-bottom: 2px solid var(--border);
-  padding: 24px 0;
-  margin-bottom: 32px;
-  border-radius: 12px;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+  margin-bottom: 40px;
   box-shadow: var(--shadow);
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 24px;
-  padding: 24px;
+  padding: 20px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .brand {
@@ -105,64 +117,73 @@ code {
 }
 
 .brand-icon {
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  border-radius: 12px;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
 }
 
 .brand-text h1 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin: 0;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .brand-text p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin: 0;
   color: var(--muted);
+  font-weight: 500;
 }
 
 .tabs {
   display: flex;
-  gap: 8px;
+  gap: 12px;
 }
 
 .tab {
-  padding: 10px 16px;
-  border: 2px solid var(--border);
+  padding: 8px 16px;
+  border: 1px solid var(--border);
   background: transparent;
-  color: var(--muted);
+  color: var(--text-secondary);
   font-weight: 600;
+  font-size: 0.95rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .tab:hover {
   border-color: var(--primary);
   color: var(--primary);
+  background: var(--border-light);
 }
 
 .tab.active {
   background: var(--primary);
   color: white;
   border-color: var(--primary);
+  box-shadow: var(--shadow-md);
 }
 
 /* ===== Card ===== */
 .card {
   background: var(--surface);
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 32px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
-  animation: slideUp 0.4s ease;
+  animation: slideUp 0.5s ease cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes slideUp {
@@ -181,93 +202,103 @@ code {
   text-align: center;
   max-width: 600px;
   margin: 0 auto;
+  padding: 48px 32px;
 }
 
 .welcome h2 {
   color: var(--primary);
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .welcome p {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+  color: var(--text-secondary);
+  line-height: 1.7;
 }
 
 /* ===== Progress Bar ===== */
 .progress-bar {
   width: 100%;
-  height: 8px;
-  background: var(--border);
-  border-radius: 4px;
+  height: 6px;
+  background: var(--border-light);
+  border-radius: 3px;
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--primary), var(--accent));
-  transition: width 0.3s ease;
+  transition: width 0.4s ease;
 }
 
 .progress-text {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--muted);
-  margin-bottom: 1.5rem;
-  font-weight: 500;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* ===== Question Card ===== */
 .question {
-  color: var(--primary);
-  font-size: 1.3rem;
-  margin: 2rem 0;
-  line-height: 1.4;
+  color: var(--text);
+  font-size: 1.35rem;
+  margin: 24px 0;
+  line-height: 1.5;
+  font-weight: 600;
 }
 
 .answers {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
 }
 
 .answer-btn {
-  padding: 16px 24px;
+  padding: 14px 20px;
   font-weight: 600;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 2px solid var(--border);
   background: var(--surface);
-  color: var(--text);
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1rem;
+  transition: var(--transition);
+  font-size: 0.95rem;
 }
 
 .answer-btn:hover:not(:disabled) {
   border-color: var(--primary);
   color: var(--primary);
+  background: var(--border-light);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .answer-btn:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
 .answer-btn.yes:hover:not(:disabled) {
-  background: rgba(16, 185, 129, 0.1);
+  background: rgba(22, 163, 74, 0.05);
   border-color: var(--success);
   color: var(--success);
 }
 
 .answer-btn.no:hover:not(:disabled) {
-  background: rgba(220, 53, 69, 0.1);
+  background: rgba(220, 38, 38, 0.05);
   border-color: var(--danger);
   color: var(--danger);
 }
 
 .answer-btn.unknown:hover:not(:disabled) {
-  background: rgba(245, 158, 11, 0.1);
+  background: rgba(217, 119, 6, 0.05);
   border-color: var(--warning);
   color: var(--warning);
 }
@@ -278,195 +309,226 @@ code {
   margin: 0 auto;
 }
 
+.results h2 {
+  color: var(--primary);
+  margin-bottom: 28px;
+  font-size: 1.8rem;
+}
+
 .no-result {
-  padding: 2rem;
-  background: #fef2f2;
+  padding: 24px 28px;
+  background: rgba(220, 38, 38, 0.05);
   border-left: 4px solid var(--danger);
-  border-radius: 8px;
+  border-radius: 10px;
   text-align: center;
+  color: var(--danger);
 }
 
 .diagnoses {
-  margin-bottom: 2rem;
+  margin-bottom: 28px;
+  display: grid;
+  gap: 16px;
 }
 
 .diagnosis {
-  padding: 1.5rem;
-  border: 2px solid var(--border);
+  padding: 20px 24px;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  margin-bottom: 1rem;
-  transition: all 0.3s ease;
+  background: var(--surface);
+  transition: var(--transition);
 }
 
 .diagnosis:hover {
   box-shadow: var(--shadow-lg);
   border-color: var(--primary);
+  transform: translateY(-2px);
 }
 
 .diagnosis-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 12px;
 }
 
 .diagnosis-name {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--text);
 }
 
 .severity {
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: capitalize;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .severity.leve {
-  background: rgba(16, 185, 129, 0.1);
+  background: rgba(16, 185, 129, 0.15);
   color: var(--leve);
 }
 
 .severity.moderada {
-  background: rgba(245, 158, 11, 0.1);
+  background: rgba(217, 119, 6, 0.15);
   color: var(--moderada);
 }
 
 .severity.grave {
-  background: rgba(239, 68, 68, 0.1);
+  background: rgba(220, 38, 38, 0.15);
   color: var(--grave);
 }
 
 .confidence {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--muted);
-  font-weight: 600;
+  font-weight: 700;
+  background: var(--border-light);
+  padding: 6px 12px;
+  border-radius: 8px;
 }
 
 .diagnosis-section {
-  margin-top: 1rem;
-  padding-top: 1rem;
+  margin-top: 16px;
+  padding-top: 16px;
   border-top: 1px solid var(--border);
 }
 
 .diagnosis-section strong {
   display: block;
   color: var(--primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
   font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .diagnosis-section p {
-  color: var(--text);
+  color: var(--text-secondary);
   margin: 0;
+  line-height: 1.6;
 }
 
 /* ===== Symptoms Summary ===== */
 .symptoms-summary {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: #f0fdf4;
+  margin: 28px 0;
+  padding: 20px 24px;
+  background: rgba(16, 185, 129, 0.05);
   border-left: 4px solid var(--success);
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .symptoms-summary h3 {
   color: var(--success);
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .symptom-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
 .symptom-tag {
   display: inline-block;
   background: var(--success);
   color: white;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 /* ===== Buttons ===== */
 .btn-primary,
 .btn-secondary {
-  padding: 14px 32px;
-  font-weight: 600;
+  padding: 12px 28px;
+  font-weight: 700;
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1rem;
+  transition: var(--transition);
+  font-size: 0.95rem;
   display: inline-block;
+  letter-spacing: 0.02em;
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
   color: white;
+  box-shadow: var(--shadow-md);
 }
 
 .btn-primary:hover {
-  background: var(--primary-dark);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(13, 110, 253, 0.3);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 .btn-secondary {
-  background: var(--border);
-  color: var(--text);
-  border: 2px solid var(--primary);
+  background: var(--border-light);
   color: var(--primary);
+  border: 2px solid var(--primary);
+  font-weight: 600;
 }
 
 .btn-secondary:hover {
   background: var(--primary);
   color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .actions {
   display: flex;
   gap: 12px;
-  margin-top: 2rem;
+  margin-top: 28px;
   flex-wrap: wrap;
 }
 
 .actions button {
   flex: 1;
-  min-width: 150px;
+  min-width: 160px;
 }
 
 /* ===== Disclaimer ===== */
 .disclaimer {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: #fef3c7;
+  margin: 24px 0;
+  padding: 16px 20px;
+  background: rgba(217, 119, 6, 0.08);
   border-left: 4px solid var(--warning);
-  border-radius: 8px;
-  color: #78350f;
-  font-size: 0.95rem;
-  font-weight: 500;
+  border-radius: 10px;
+  color: var(--warning);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 /* ===== Code Block ===== */
 .code-block {
-  background: #1f2937;
-  color: #e5e7eb;
-  padding: 1.5rem;
-  border-radius: 8px;
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 20px;
+  border-radius: 10px;
   overflow-x: auto;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.6;
   font-family: 'Monaco', 'Courier New', monospace;
   max-height: 600px;
   overflow-y: auto;
+  box-shadow: var(--shadow-md);
 }
 
 .code-block code {
@@ -486,13 +548,13 @@ code {
 }
 
 .spinner {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border: 4px solid var(--border);
   border-top: 4px solid var(--primary);
   border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 16px;
 }
 
 @keyframes spin {
@@ -504,17 +566,19 @@ code {
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .app {
-    padding: 16px 12px 48px;
+    padding: 20px 16px 60px;
   }
 
   .card {
-    padding: 20px;
+    padding: 24px 20px;
+    border-radius: 12px;
   }
 
   .header {
     flex-direction: column;
     gap: 16px;
     align-items: flex-start;
+    padding: 16px 20px;
   }
 
   .brand {
@@ -527,6 +591,7 @@ code {
 
   .answers {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .diagnosis-title {
@@ -553,30 +618,77 @@ code {
   .question {
     font-size: 1.1rem;
   }
+
+  .welcome h2 {
+    font-size: 1.6rem;
+  }
 }
 
 @media (max-width: 480px) {
   .app {
-    padding: 12px 8px 32px;
+    padding: 16px 12px 40px;
   }
 
   .card {
-    padding: 16px;
+    padding: 20px 16px;
     border-radius: 12px;
+  }
+
+  .header {
+    padding: 12px 16px;
+  }
+
+  .brand-text h1 {
+    font-size: 1.1rem;
+  }
+
+  .brand-text p {
+    font-size: 0.75rem;
+  }
+
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
   }
 
   h1 {
     font-size: 1.25rem;
   }
 
-  .brand-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1.25rem;
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .question {
+    font-size: 1rem;
+  }
+
+  .welcome h2 {
+    font-size: 1.35rem;
+  }
+
+  .welcome p {
+    font-size: 0.95rem;
   }
 
   .answer-btn {
     padding: 12px 16px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  .diagnosis-name {
+    font-size: 1.05rem;
+  }
+
+  .severity {
+    padding: 4px 10px;
+    font-size: 0.7rem;
   }
 }

@@ -5,13 +5,16 @@ interface WelcomeProps {
 export default function Welcome({ onStart }: WelcomeProps) {
   return (
     <div className="card welcome">
-      <h2>Comencemos su evaluación</h2>
-      <p>Le haré una serie de preguntas sobre síntomas relacionados con la salud renal.</p>
-      <p className="disclaimer">
-        ⚠️ Esta herramienta es educativa. Consulte siempre a un especialista.
+      <h2>Evaluación de Salud Renal</h2>
+      <p>Responda una serie de preguntas sobre sus síntomas para obtener una evaluación preliminar.</p>
+      <p style={{ fontSize: '0.95rem', color: 'var(--muted)' }}>
+        Esta herramienta utiliza un sistema experto basado en conocimiento médico especializado.
       </p>
+      <div className="disclaimer" style={{ marginBottom: '24px' }}>
+        ⚠️ Herramienta educativa. Consulte siempre a un especialista en nefrología para diagnóstico definitivo.
+      </div>
       <button className="btn-primary" onClick={onStart}>
-        Iniciar consulta
+        Comenzar Evaluación
       </button>
     </div>
   );
